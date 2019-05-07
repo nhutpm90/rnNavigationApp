@@ -2,6 +2,12 @@ package com.rnnavigationapp;
 
 import com.facebook.react.ReactActivity;
 
+// react-navigation start
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.ReactRootView;
+import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+// react-navigation end
+
 public class MainActivity extends ReactActivity {
 
     /**
@@ -12,4 +18,16 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "rnNavigationApp";
     }
+
+    // react-navigation start
+    @Override
+    protected ReactActivityDelegate createReactActivityDelegate() {
+        return new ReactActivityDelegate(this, getMainComponentName()) {
+            @Override
+            protected ReactRootView createRootView() {
+                return new RNGestureHandlerEnabledRootView(MainActivity.this);
+            }
+        };
+    }
+    // react-navigation end
 }
